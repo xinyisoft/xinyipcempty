@@ -1,4 +1,4 @@
-import Main from '@/components/main'
+import Main from '@/view/main'
 import parentView from '@/components/parent-view'
 
 /**
@@ -44,27 +44,21 @@ export default [
     ]
   },
   {
-    path: '',
-    name: 'doc',
+    path: '/tools_methods',
+    name: 'tools_methods',
     meta: {
-      title: '文档',
-      href: 'https://lison16.github.io/iview-admin-doc/#/',
-      icon: 'ios-book'
-    }
-  },
-  {
-    path: '/join',
-    name: 'join',
+      hide: true
+    },
     component: Main,
     children: [
       {
-        path: 'join_page',
-        name: 'join_page',
+        path: 'tools_methods_page',
+        name: 'tools_methods_page',
         meta: {
-          icon: '_qq',
-          title: 'QQ群'
+          icon: 'ios-hammer',
+          title: '工具方法'
         },
-        component: () => import('@/view/join-page.vue')
+        component: () => import('@/view/tools-methods/tools-methods.vue')
       }
     ]
   },
@@ -201,25 +195,6 @@ export default [
     ]
   },
   {
-    path: '/tools_methods',
-    name: 'tools_methods',
-    meta: {
-      hide: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'tools_methods_page',
-        name: 'tools_methods_page',
-        meta: {
-          icon: 'ios-hammer',
-          title: '工具方法'
-        },
-        component: () => import('@/view/tools-methods/tools-methods.vue')
-      }
-    ]
-  },
-  {
     path: '/directive',
     name: 'directive',
     meta: {
@@ -239,54 +214,19 @@ export default [
     ]
   },
   {
-    path: '/multilevel',
-    name: 'multilevel',
-    meta: {
-      icon: 'md-menu',
-      title: '多级菜单'
-    },
+    path: '/join',
+    name: 'join',
     component: Main,
     children: [
       {
-        path: 'level_2_1',
-        name: 'level_2_1',
+        path: 'join_page',
+        name: 'join_page',
         meta: {
-          icon: 'md-funnel',
-          title: '二级-1'
+          icon: '_qq',
+          title: '关于我们'
         },
-        component: () => import('@/view/multilevel/level-2-1.vue')
-      },
-      {
-        path: 'level_2_2',
-        name: 'level_2_2',
-        meta: {
-          access: ['super_admin'],
-          icon: 'md-funnel',
-          showAlways: true,
-          title: '二级-2'
-        },
-        component: parentView,
-        children: [
-          {
-            path: 'level_2_2_1',
-            name: 'level_2_2_1',
-            meta: {
-              icon: 'md-funnel',
-              title: '三级'
-            },
-            component: () => import('@/view/multilevel/level-2-2/level-3-1.vue')
-          }
-        ]
-      },
-      {
-        path: 'level_2_3',
-        name: 'level_2_3',
-        meta: {
-          icon: 'md-funnel',
-          title: '二级-3'
-        },
-        component: () => import('@/view/multilevel/level-2-3.vue')
-      },
+        component: () => import('@/view/join-page.vue')
+      }
     ]
   },
   {
