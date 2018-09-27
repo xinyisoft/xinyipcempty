@@ -24,7 +24,9 @@ let routers_sys = [
   },
   {
     path: '/aboutus',
-    name: 'aboutus',
+    meta: {
+      hide: true
+    },
     component: Main,
     children: [
       {
