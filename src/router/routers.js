@@ -1,5 +1,43 @@
 import Main from '@/view/main'
-let routers = [
+import pages from './pages'
+
+let routers = [];
+let routers_sys = [
+  {
+    path: '/update_log',
+    name: 'update_log',
+    meta: {
+      hide: true
+    },
+    component: Main,
+    children: [
+      {
+        path: 'update_log_page',
+        name: 'update_log_page',
+        meta: {
+          icon: 'ios-alarm-outline',
+          title: '升级记录'
+        },
+        component: () => import('@/view/update/log.vue')
+      }
+    ]
+  },
+  {
+    path: '/aboutus',
+    name: 'aboutus',
+    component: Main,
+    children: [
+      {
+        path: 'aboutus_page',
+        name: 'aboutus_page',
+        meta: {
+          icon: 'ios-contact-outline',
+          title: '关于我们'
+        },
+        component: () => import('@/view/update/aboutus.vue')
+      }
+    ]
+  },
   {
     path: '/login',
     name: 'login',
@@ -54,41 +92,7 @@ let routers = [
       hideInMenu: true
     },
     component: () => import('@/view/error-page/404.vue')
-  },
-  {
-    path: '/update_log',
-    name: 'update_log',
-    meta: {
-      hide: true
-    },
-    component: Main,
-    children: [
-      {
-        path: 'update_log_page',
-        name: 'update_log_page',
-        meta: {
-          icon: 'ios-alarm-outline',
-          title: '升级记录'
-        },
-        component: () => import('@/view/update/log.vue')
-      }
-    ]
-  },
-  {
-    path: '/aboutus',
-    name: 'aboutus',
-    component: Main,
-    children: [
-      {
-        path: 'aboutus_page',
-        name: 'aboutus_page',
-        meta: {
-          icon: 'ios-contact-outline',
-          title: '关于我们'
-        },
-        component: () => import('@/view/update/aboutus.vue')
-      }
-    ]
   }
 ];
+routers = routers.concat(pages,routers_sys);
 export default routers;
