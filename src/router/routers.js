@@ -1,7 +1,4 @@
 import Main from '@/view/main'
-import pages from './pages'
-import demo from './demo'
-
 let routers = [
   {
     path: '/login',
@@ -57,11 +54,7 @@ let routers = [
       hideInMenu: true
     },
     component: () => import('@/view/error-page/404.vue')
-  }
-];
-routers = routers.concat(pages);
-
-routers = routers.concat([
+  },
   {
     path: '/update_log',
     name: 'update_log',
@@ -97,10 +90,5 @@ routers = routers.concat([
       }
     ]
   }
-]);
-// 如果是开发模式就引入demo
-if (process.env.NODE_ENV === 'development'){
-  routers = routers.concat(demo);
-}
-
+];
 export default routers;
