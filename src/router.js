@@ -1,31 +1,44 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import routerdata from './pages.json'
+
+console.log(routerdata)
 
 Vue.use(Router)
 
-export default new Router({
+const Routers = new Router({
     routes: [
         {
-            path: '/',
-            name: 'home',
-            component: Home
-        },
-        {
-            path: '/about',
-            name: 'about',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () => import('./views/About.vue')
-        },
-        {
-            path: '/test',
-            name: 'test',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () => import('./views/Test.vue')
+            path: '*',
+            name: 'html404',
+            component: resolve => require(['@/pages/app/default'], resolve),
+            meta: {
+                config: require('@/pages/app/default.json')
+            }
         }
     ]
 })
+routerdata.forEach(function (obj, index) {
+    console.log(obj, index);
+
+    if (index === 0) {
+        Routers.addRoutes([{
+            path: '/',
+            name: 'home',
+            component: resolve => require(['./' + obj], resolve),
+            meta: {
+                config: require('./' + obj + '.json')
+            }
+        }])
+    }else{
+        Routers.addRoutes([{
+            path: '/' + obj,
+            name: obj,
+            component: resolve => require(['./' + obj], resolve),
+            meta: {
+                config: require('./' + obj + '.json')
+            }
+        }])
+    }
+})
+export default Routers

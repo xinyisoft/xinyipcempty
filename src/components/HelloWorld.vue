@@ -7,7 +7,7 @@
                 <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
             </div>
             <div>
-                <Rate v-model="value" />
+                <Rate v-model="value"/>
             </div>
         </el-card>
 
@@ -19,10 +19,15 @@
 
     export default {
         name: 'HelloWorld',
+        data() {
+            return {
+                value: 1
+            }
+        },
         props: {
             msg: String
         },
-        components:{
+        components: {
             Rate
         }
     }
