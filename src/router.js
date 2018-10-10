@@ -4,8 +4,6 @@ import store from './store'
 import routerdata from './pages.json'
 import {LoadingBar} from 'iview'
 
-console.log(routerdata)
-
 Vue.use(Router)
 
 const Routers = new Router({
@@ -41,9 +39,45 @@ routerdata.forEach(function (obj, index) {
         }])
     }
 })
+const loadAppinfo = false;
+
+function getAppInfo(callback) {
+    if (loadAppinfo) {
+        callback();
+        return true
+    }
+    try {
+        XY.getAppLoginInfo({
+            success(res) {
+                store.commit('setAppConfig', res);
+                XY.getUserAuth({
+                    success(res) {
+                        if (res.super === true) {
+                            store.commit('setAdmin', true)
+                        }
+                        store.commit('setAuthConfig', res.auth)
+                        callback();
+                    },
+                    fail(e) {
+                        callback()
+                    }
+                })
+            },
+            fail(e) {
+                callback()
+            }
+        })
+    } catch (e) {
+        callback()
+    }
+}
+
 Routers.beforeEach((to, from, next) => {
     LoadingBar.start()
     store.commit('setMenuSelect', to.path);
+    getAppInfo(function () {
+        // 对页面进行鉴权
+    })
     console.log(to, from)
     next();
 })

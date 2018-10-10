@@ -2,7 +2,6 @@ import DivAuth from './DivAuth'
 import SpanAuth from './SpanAuth'
 import XyIcon from './XyIcon'
 import XinyiJS from '../xinyi'
-
 import {
     Pagination,
     Dialog,

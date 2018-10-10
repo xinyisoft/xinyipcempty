@@ -4,14 +4,13 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 const navigationDefault = {
-    navigationBarBackgroundColor: '#ffffff',
-    navigationBarTextStyle: 'black',
+    navigationBarBackgroundColor: '#fff',
+    navigationBarTextStyle: '#000',
     navigationBarTitleText: '轻餐饮小程序',
+    navigationBarIcon: '',
     backgroundColor: '#eeeeee',
-    backgroundTextStyle: 'light',
-    navigationImmerse: false,
     navigationMenus: [],
-    navigationBackButton: false
+    navigationHide: false
 };
 
 export default new Vuex.Store({
