@@ -2,12 +2,17 @@
     <el-container class="table-container">
         <el-header height="55px">
             <el-container class="table-header-title">
-                <el-main>
+                <el-aside width="250px" class="table-tools-title">
                     欢迎使用表格插件
-                </el-main>
-                <el-aside width="150px" class="table-tools-button">
-                    <i class="iconfont icon-shaixuan"></i>
                 </el-aside>
+                <el-main class="table-tools-button">
+                    <el-button size="small" icon="el-icon-search" circle></el-button>
+                    <el-button size="small" type="primary" icon="el-icon-edit" circle></el-button>
+                    <el-button size="small" type="success" icon="el-icon-check" circle></el-button>
+                    <el-button size="small" type="info" icon="el-icon-message" circle></el-button>
+                    <el-button size="small" type="warning" icon="el-icon-star-off" circle></el-button>
+                    <el-button size="small" type="danger" icon="el-icon-delete" circle></el-button>
+                </el-main>
             </el-container>
         </el-header>
         <el-main>
