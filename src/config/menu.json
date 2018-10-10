@@ -1,0 +1,16 @@
+[
+  {
+    "index": "/",
+    "title": "Home首页"
+  },
+  {
+    "index": "/",
+    "title": "Home",
+    "children": [
+      {
+        "index": "/pages/Test",
+        "title": "测试页面2"
+      }
+    ]
+  }
+]

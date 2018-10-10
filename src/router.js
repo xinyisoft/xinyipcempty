@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from './store'
-import routerdata from './pages.json'
+import routerdata from './config/pages.json'
 import {LoadingBar} from 'iview'
 
 Vue.use(Router)
@@ -78,7 +78,6 @@ Routers.beforeEach((to, from, next) => {
     getAppInfo(function () {
         // 对页面进行鉴权
     })
-    console.log(to, from)
     next();
 })
 

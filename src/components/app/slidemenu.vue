@@ -20,22 +20,7 @@
         components: {SlidemenuChildView},
         data() {
             return {
-                slidemenu: [
-                    {
-                        index: '/',
-                        title: 'Home'
-                    },
-                    {
-                        index: '/',
-                        title: 'Home',
-                        children: [
-                            {
-                                index: '/pages/Test',
-                                title: 'Test'
-                            }
-                        ]
-                    }
-                ]
+                slidemenu: require('../../config/menu.json')
             }
         },
         computed: {
