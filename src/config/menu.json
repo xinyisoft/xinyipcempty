@@ -1,7 +1,8 @@
 [
   {
     "index": "/",
-    "title": "Home首页"
+    "icon" : "iconfont icon-home",
+    "title": "首页"
   },
   {
     "index": "/",
