@@ -4,17 +4,17 @@ module.exports = {
     ],
     plugins: [
         [
-            "component",
+            'component',
             {
-                "libraryName": "element-ui",
-                "styleLibraryName": "theme-chalk"
+                'libraryName': 'element-ui',
+                'styleLibraryName': 'theme-chalk'
             }
         ],
         [
-            "import",
+            'import',
             {
-            "libraryName": "iview",
-            "libraryDirectory": "src/components"
+            'libraryName': 'iview',
+            'libraryDirectory': 'src/components'
         }]
     ]
 }

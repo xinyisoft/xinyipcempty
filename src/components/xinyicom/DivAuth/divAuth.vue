@@ -1,7 +1,9 @@
 <template>
-    <div v-if="haveAuth" :style="{display: display}">
-        <slot></slot>
-    </div>
+  <div
+    v-if="haveAuth"
+    :style="{display: display}">
+    <slot></slot>
+  </div>
 </template>
 
 <script>

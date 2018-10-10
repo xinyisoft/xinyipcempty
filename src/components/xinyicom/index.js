@@ -1,6 +1,7 @@
 import DivAuth from './DivAuth'
 import SpanAuth from './SpanAuth'
 import XyIcon from './XyIcon'
+import XinyiJS from '../xinyi'
 
 import {
     Pagination,
@@ -152,6 +153,7 @@ const XinyiAuthApi = {
         Vue.use(Main);
         Vue.use(Footer);
         Vue.use(Loading.directive);
+        Vue.prototype.$XY = XinyiJS;
         Vue.prototype.$loading = Loading.service;
         Vue.prototype.$msgbox = MessageBox;
         Vue.prototype.$alert = MessageBox.alert;

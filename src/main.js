@@ -8,7 +8,7 @@ import 'iview/dist/styles/iview.css';
 Vue.config.productionTip = false
 
 Vue.use(XinyiCom)
-
+console.log(store)
 new Vue({
     router,
     store,

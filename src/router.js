@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from './store'
 import routerdata from './pages.json'
+import {LoadingBar} from 'iview'
 
 console.log(routerdata)
 
@@ -19,8 +21,6 @@ const Routers = new Router({
     ]
 })
 routerdata.forEach(function (obj, index) {
-    console.log(obj, index);
-
     if (index === 0) {
         Routers.addRoutes([{
             path: '/',
@@ -30,7 +30,7 @@ routerdata.forEach(function (obj, index) {
                 config: require('./' + obj + '.json')
             }
         }])
-    }else{
+    } else {
         Routers.addRoutes([{
             path: '/' + obj,
             name: obj,
@@ -41,4 +41,16 @@ routerdata.forEach(function (obj, index) {
         }])
     }
 })
+Routers.beforeEach((to, from, next) => {
+    LoadingBar.start()
+    store.commit('setMenuSelect', to.path);
+    console.log(to, from)
+    next();
+})
+
+Routers.afterEach(to => {
+    LoadingBar.finish()
+    window.scrollTo(0, 0)
+})
+
 export default Routers
