@@ -2,6 +2,7 @@ import DivAuth from './DivAuth'
 import SpanAuth from './SpanAuth'
 import XyIcon from './XyIcon'
 import XinyiJS from '../xinyi'
+import Pinyin from './pinyin'
 import {Drawer} from 'iview'
 
 const components = {
@@ -21,7 +22,8 @@ const XinyiAuthApi = {
         Object.keys(XinyiAuth).forEach(key => {
             Vue.component(key, XinyiAuth[key]);
         });
-        Vue.prototype.$XY = XinyiJS;
+        Vue.use(XinyiJS)
+        Vue.use(Pinyin)
     }
 }
 if (typeof window !== 'undefined' && window.Vue) {

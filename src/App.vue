@@ -66,7 +66,8 @@
             }
         },
         created() {
-            console.log(this)
+            console.log(this.$pinyin.toPinyin('嗷嗷嗷'))
+            console.log(this.$pinyin.toPinyinIndex('嗷嗷嗷'))
             this.windows.height = window.innerHeight + 'px';
         },
         computed: {
