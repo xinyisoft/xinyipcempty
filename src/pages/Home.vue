@@ -1,9 +1,15 @@
 <template>
-    <div class="home">
-        <h1>
-            首页，请在此开发，建议增加组件，然后加入该页面
-        </h1>
-    </div>
+    <el-main>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span>卡片名称</span>
+                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+            </div>
+            <div v-for="o in 4" :key="o" class="text item">
+                {{'列表内容 ' + o }}
+            </div>
+        </el-card>
+    </el-main>
 </template>
 
 <script>

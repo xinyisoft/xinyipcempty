@@ -28,13 +28,11 @@
                 </el-container>
             </el-header>
             <el-container class="body-container">
-                <el-aside width="250px">
+                <el-aside width="250px" class="mainslider">
                     <slidemenu-view></slidemenu-view>
                 </el-aside>
-                <el-container>
-                    <el-main :style="{backgroundColor: appNavConfig.backgroundColor}">
-                        <router-view/>
-                    </el-main>
+                <el-container :style="{backgroundColor: appNavConfig.backgroundColor}">
+                    <router-view/>
                     <el-footer class="window-footer" height="40px">
                         @ Copy right XinyiSoft.cn & 芯易科技（北京）有限公司
                     </el-footer>
@@ -77,65 +75,5 @@
 
 </script>
 <style lang="less">
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        .main-container {
-            .body-container {
-                .el-aside {
-                    background-color: #545c64;
-                }
-                .el-header {
-                    background: #FFFFFF;
-                }
-                .window-footer {
-                    line-height: 40px;
-                    color: #9e9e9e;
-                }
-            }
-            .window-tools {
-                line-height: 40px;
-                padding: 0;
-                .window-icon {
-                    line-height: 40px;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    padding-left: 10px;
-                    font-size: 14px;
-                }
-                .window-font-icon {
-                    font-size: 24px;
-                    margin-top: 8px;
-                    float: left;
-                    margin-right: 8px;
-                }
-                .window-icon-img {
-                    height: 40px;
-                    width: auto;
-                }
-                .window-tools-button {
-                    font-size: 18px;
-                    text-align: right;
-                    padding-right: 10px;
-                    i {
-                        padding-left: 8px;
-                    }
-                }
-            }
-        }
-    }
-
-    .ivu-drawer-mask, .ivu-drawer {
-        top: 40px !important;
-    }
-
-    .ivu-drawer-wrap {
-        top: 40px !important;
-    }
-
-    .ivu-loading-bar {
-        height: 1px !important;
-    }
+    @import "assets/app";
 </style>
