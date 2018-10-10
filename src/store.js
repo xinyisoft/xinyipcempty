@@ -15,10 +15,10 @@ const navigationDefault = {
 
 export default new Vuex.Store({
     state: {
-        isAdmin: true,
+        isAdmin: false,
         authConfig: {},
         appNavConfig: navigationDefault,
-        authPublic: ['/', '/pages/auth/no', '/pages/example/*'],
+        authPublic: ['/', '/noauth', '/pages/default'],
         menuSelect: '/',
         appConfig: {
             appid: 1000,

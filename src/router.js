@@ -15,6 +15,14 @@ const Routers = new Router({
             meta: {
                 config: require('@/pages/app/default.json')
             }
+        },
+        {
+            path: '/noauth',
+            name: 'noauth',
+            component: resolve => require(['@/pages/app/noauth'], resolve),
+            meta: {
+                config: require('@/pages/app/noauth.json')
+            }
         }
     ]
 })
@@ -77,8 +85,15 @@ Routers.beforeEach((to, from, next) => {
     store.commit('setMenuSelect', to.path);
     getAppInfo(function () {
         // 对页面进行鉴权
+        if (process.env.NODE_ENV === 'production' && !store.state.isAdmin) {
+            if (store.state.authPublic.indexOf(to.path) === -1 && !store.state.authConfig[to.path]) {
+                Routers.push('/noauth')
+                next(false)
+                return false
+            }
+        }
+        next();
     })
-    next();
 })
 
 Routers.afterEach(to => {
