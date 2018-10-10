@@ -52,11 +52,10 @@
 <script>
     import SlidemenuView from './components/app/slidemenu'
     import {mapState} from 'vuex'
-    import {Drawer} from 'iview'
 
     export default {
         name: 'HelloWorld',
-        components: {SlidemenuView, Drawer},
+        components: {SlidemenuView},
         data() {
             return {
                 chattalk: false,
@@ -91,7 +90,7 @@
                 .el-header {
                     background: #FFFFFF;
                 }
-                .window-footer{
+                .window-footer {
                     line-height: 40px;
                     color: #9e9e9e;
                 }
@@ -129,7 +128,7 @@
         }
     }
 
-    .ivu-drawer-mask,.ivu-drawer {
+    .ivu-drawer-mask, .ivu-drawer {
         top: 40px !important;
     }
 
