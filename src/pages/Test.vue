@@ -3,27 +3,27 @@
         <el-header height="55px">
             <el-container class="table-header-title">
                 <el-aside width="250px" class="table-tools-title">
-                    欢迎使用表格插件
+                    {{title}}
                 </el-aside>
                 <el-main class="table-tools-button">
                     <el-button size="small" icon="el-icon-search" circle></el-button>
+                    <el-button size="small" type="success" icon="el-icon-plus" circle></el-button>
                     <el-button size="small" type="primary" icon="el-icon-edit" circle></el-button>
-                    <el-button size="small" type="success" icon="el-icon-check" circle></el-button>
-                    <el-button size="small" type="info" icon="el-icon-message" circle></el-button>
-                    <el-button size="small" type="warning" icon="el-icon-star-off" circle></el-button>
                     <el-button size="small" type="danger" icon="el-icon-delete" circle></el-button>
+                    <el-button size="small" type="warning" icon="el-icon-star-off" circle></el-button>
                 </el-main>
             </el-container>
         </el-header>
         <el-main>
             <el-table
-                    :data="tableData3"
+                    :data="data"
                     border
-                    :height="tableheight"
+                    :height="tableHeight"
                     style="width: 100%">
                 <el-table-column
                         type="index"
-                        width="50">
+                        width="50"
+                        :index="indexMethod">
                 </el-table-column>
                 <el-table-column
                         prop="date"
@@ -41,140 +41,75 @@
                 </el-table-column>
             </el-table>
         </el-main>
-        <el-footer>
+        <el-footer v-if="page">
             <el-pagination
                     @size-change="handleSizeChange"
                     @current-change="handleCurrentChange"
                     :current-page="currentPage"
-                    :page-sizes="[100, 200, 300, 400]"
-                    :page-size="100"
+                    :page-sizes="pageSizes"
+                    :page-size="pageSize"
                     layout="total, sizes, prev, pager, next, jumper"
-                    :total="4000">
+                    :total="total">
             </el-pagination>
         </el-footer>
     </el-container>
 </template>
 <script>
     export default {
+        props: {
+            title: {
+                type: String,
+                default: '表格插件'
+            },
+            page: {
+                type: Boolean,
+                default: true
+            },
+            pageSize: {
+                type: Number,
+                default: 30
+            },
+            pageSizes: {
+                default: function () {
+                    return [30, 50, 100, 200];
+                }
+            },
+            total: {
+                type: Number,
+                default: 1
+            },
+            currentPage: {
+                type: Number,
+                default: 1
+            },
+            data: {
+                type: Array,
+                default: function () {
+                    return [];
+                }
+            },
+            url: {
+                type: String,
+                default: ''
+            }
+        },
         data() {
             return {
-                currentPage: 2,
-                tableheight: '0px',
-                tableData3: [{
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-08',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-06',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-07',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }]
+                tableHeight: '0px'
+
             }
         },
         created() {
-            this.tableheight = (window.innerHeight - 242) + 'px';
+            if (this.page) {
+                this.tableHeight = (window.innerHeight - 242) + 'px';
+            } else {
+                this.tableHeight = (window.innerHeight - 182) + 'px';
+            }
         },
         methods: {
+            indexMethod(index) {
+                return index * this.currentPage
+            },
             handleSizeChange(val) {
                 console.log(`每页 ${val} 条`);
             },

@@ -1,5 +1,7 @@
 <template>
-  <div>404错误，没有找到指定的页面</div>
+    <el-main>
+        <div>404错误，没有找到指定的页面</div>
+    </el-main>
 </template>
 
 <script>

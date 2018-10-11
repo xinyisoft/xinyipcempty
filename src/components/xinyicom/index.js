@@ -1,6 +1,5 @@
 import DivAuth from './DivAuth'
 import SpanAuth from './SpanAuth'
-import XyIcon from './XyIcon'
 import XinyiJS from '../xinyi'
 import Pinyin from './pinyin'
 import {Drawer} from 'iview'
@@ -8,7 +7,6 @@ import {Drawer} from 'iview'
 const components = {
     DivAuth,
     SpanAuth,
-    XyIcon,
     Drawer
 }
 
